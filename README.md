@@ -15,7 +15,7 @@ Este archivo es un formato usado en bioinformatica que consiste de nueve columna
 - Atributos, indica varias cosas como un id unico si la secuencia es hija de otro ente en el arcivo, si es ADN circular entre otras cosas 
 
 ### Calidris pugnax Datos 
-- Es un ave limicola que habita en Eurasia y Africa, el ave presenta tamaño mediano y se alimenta de gusanos insectos y semillas 
+- Es un ave limícola que habita en Eurasia y África; el ave presenta tamaño mediano, donde las hembras miden entre 25 y 26 cm, los machos entre 31 y 34 cm, y la envergadura alar de los machos es de 52 a 60 cm. Habita en humedales, marismas y bordes de ríos, donde realizan migraciones estacionales, y se alimenta principalmente de gusanos, insectos y semillas.
 
 
 ### ¿Cuantos features contiene el archivo?
