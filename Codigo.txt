@@ -1,7 +1,16 @@
 wget https://ftp.ensembl.org/pub/current_gff3/calidris_pugnax/Calidris_pugnax.ASM143184v1.114.gff3.gz
 mv Calidris_pugnax.ASM143184v1.114.gff3.gz Ave.gff3.gz
 gunzip Ave.gff3.gz
-grep -v ^# Ave.gff3 | wc -l
-cut -f3 Ave.gff3 | grep -v ^# | grep -i biological_region | wc -l
-cut -f3 Ave.gff3 | grep -v ^# | grep -i biological_region | wc -l
-cut -f3 Ave.gff3 | grep -v ^# | grep -i biological_region | wc -l
+# primero descargas el archivo con el path, luego le cambias el nombre para hacerlo mas facil de manipular, luego #descomprimes el archivo porque queda comprimido 
+
+cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq | wc -l
+# hay 19 categorias distintas  el codigo primero corta la tercera columna luego grep busca las filas que empiezan con # y #gracias a -v te devuelve el archivo sin las columnas que empiezan con # luego las ordena porque uniq quita las repetidas #pero solo cuando las filas repetidas estan seguidas por eso el sort antes luego el wc -l cuenta las lineas 
+
+cut -f3 Ave.gff3 | grep -v "^#" | grep -i "biological_region" | wc -l
+# Hay  52035 regiones de genes distintas dentro de la region 1, hay una entrada de region 1 asi que se asume que #"biological_region" es la subregion dentro de region 1" se extrae la columna se quitan las regiones que comienzan por # #luego con el grep -i(hace que no le importe mayusculas) buscamos "biological_region" yimprimimos el numero de veces que #aparece con wc-l
+   
+cut -f3 Ave.gff3 | grep -v "^#" | grep -i "^gene" | wc -l
+# hay con el tag de gene en el organismo 16422, se hace lo mismo que para "biological_region" con la diferencia que con el #"^" se buscan solo las entradas que tienen "gene" al inicio puesto que hay otras entradas que contienen la palabra 
+
+cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq -c | sort -nr
+# Se extraen columnas se quitan las filas que comienzan por # se ordenan las entradas luego se usa uniq -c que cuenta las #lineas repetidas seguidas, por eso se usa sort antes y luego otro sort -nr para ordenarlos numericamente y el "r" para que #sea de mayor a menor
