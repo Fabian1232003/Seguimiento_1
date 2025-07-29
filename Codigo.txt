@@ -16,3 +16,6 @@ cut -f3 Ave.gff3 | grep -v "^#" | grep -i "^gene" | wc -l
 
 cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq -c | sort -nr | head -n 10
 # Se extraen columnas se quitan las filas que comienzan por # se ordenan las entradas luego se usa uniq -c que cuenta las #lineas repetidas seguidas, por eso se usa sort antes y luego otro sort -nr para ordenarlos numericamente y el "r" para que sea de mayor a menor, head -nuemro 10 muestra las primeras 10 lineas, de aqui se saco el dato para el numero distinto de "region"
+
+cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq -c | sort -nr 
+# este se uso para hayar todos los conteos de los features 
