@@ -23,7 +23,7 @@ El archivo contiene 19 features ordenadas de mayor incidencia a menor incidencia
 <img src="image.png" alt="" width="600">
 
 ### ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?
-- Para contestar esto se tomo como "biological_region" la region del cromosoma tambien hay una region 1 se sospecha que la region biologica es una subdivision de la region 1, hay 52035 "biological_regions"
+- Para contestar esto hay que acalrar que se consideraron dos features ya que ambos aluden a regiones de cormosomas, la priemra es biological_region, hay 16442, para region hay que es el otro feature que habla de regiones hay 3753 entradas distintas
   
   ### ¿Cuántos genes están listados en el organismo?
 - Solo se tomaron en cuenta la cantidad de entradas distintas del apartado "gene" ya que habia otras regiones que tenian la palabra gene incluidas pero son cosas como cdRNA_gene que se puede ver como hijo de la categoria gene, hay 16422 genes distintos, tambien se comprobo que cada linea de gen es unica haciendo extrallendo del archvivo cada gen con su respectivo id y comprobando que el numero sea igual al numero de lineas de la columna tres que dicen la palabra gen, se uso el siguiente codigo 
