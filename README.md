@@ -1,6 +1,6 @@
 # Analisis  Bioinformatico Calidris pugnax
 
-### Que es un archivo .gff
+### Que es un archivo .gff3
 
 Este archivo es un formato usado en bioinformatica que consiste de nueve columnas separadas por tabs la primera columna contienen 
 
@@ -23,14 +23,16 @@ El archivo contiene 19 features ordenadas de mayor incidencia a menor incidencia
 <img src="image.png" alt="" width="600">
 
 ### ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?
-- Para contestar esto hay que acalrar que se consideraron dos features ya que ambos aluden a regiones de cormosomas, la priemra es biological_region, hay 16442, para region hay que es el otro feature que habla de regiones hay 3753 entradas distintas
+- Para contestar esto hay que acalrar que se consideraron dos features ya que ambos aluden a regiones de cormosomas, la priemra es biological_region, hay 16442, para region hay que es el otro feature que habla de regiones hay 3753 entradas distintas, biological regions son sub-regiones de regions
   
   ### ¿Cuántos genes están listados en el organismo?
-- Solo se tomaron en cuenta la cantidad de entradas distintas del apartado "gene" ya que habia otras regiones que tenian la palabra gene incluidas pero son cosas como cdRNA_gene que se puede ver como hijo de la categoria gene, hay 16422 genes distintos, tambien se comprobo que cada linea de gen es unica haciendo extrallendo del archvivo cada gen con su respectivo id y comprobando que el numero sea igual al numero de lineas de la columna tres que dicen la palabra gen, se uso el siguiente codigo:
+- Para el apartado de genes hay 16442 entradas distintas, hay 3591 de ncRNA_gene que son genes que no codifican para proteinas como genes ribosomales por ejemplo, hay 39 pseudogenes que son mutado que no codifican para proteinas  
+
+- tambien se comprobo que cada linea de gen es unica haciendo extrallendo del archvivo cada gen con su respectivo id y comprobando que el numero sea igual al numero de lineas de la columna tres que dicen la palabra gen, se uso el siguiente codigo:
 
 ```bash
 cut -f3,9 Ave.gff3 | grep -v "^#" | grep -i "^gene" | awk -F'\t' '{ match($2, /gene:([^;]+)/, arr); if(arr[1]!="") print arr[1] }' | sort | uniq | wc -l
 ```
-Nota: se hizo lo mismo para "region"
+Nota: se hizo lo mismo para "region" 
 ### ¿Cuál es el top 10 de tipo de features (columna 3) más anotados en el genoma?
 <img src="image-1.png" alt="" width="400">
