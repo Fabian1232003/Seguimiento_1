@@ -1,3 +1,5 @@
+conda activate bioinfo
+
 wget https://ftp.ensembl.org/pub/current_gff3/calidris_pugnax/Calidris_pugnax.ASM143184v1.114.gff3.gz
 mv Calidris_pugnax.ASM143184v1.114.gff3.gz Ave.gff3.gz
 gunzip Ave.gff3.gz
