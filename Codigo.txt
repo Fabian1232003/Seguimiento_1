@@ -6,16 +6,20 @@ gunzip Ave.gff3.gz
 # primero descargas el archivo con el path, luego le cambias el nombre para hacerlo mas facil de manipular, luego #descomprimes el archivo porque queda comprimido 
 
 cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq | wc -l
-# hay 19 categorias distintas  el codigo primero corta la tercera columna luego grep busca las filas que empiezan con # y #gracias a -v te devuelve el archivo sin las columnas que empiezan con # luego las ordena porque uniq quita las repetidas #pero solo cuando las filas repetidas estan seguidas por eso el sort antes luego el wc -l cuenta las lineas 
+#El codigo primero corta la tercera columna, cut -f3 3 de tercera columna por default su separador es tab, luego grep busca las filas que empiezan con "#" y gracias a -v te devuelve el archivo sin las columnas que empiezan con "#" luego las ordena con sort porque uniq quita las filas repetidas pero solo cuando estas estan seguidas por eso el sort antes, luego el wc -l (word count, -lines)cuenta las lineas 
 
 cut -f3 Ave.gff3 | grep -v "^#" | grep -i "biological_region" | wc -l
-# Hay  52035 regiones de genes distintas dentro de la region 1, hay una entrada de region 1 asi que se asume que #"biological_region" es la subregion dentro de region 1" se extrae la columna se quitan las regiones que comienzan por # #luego con el grep -i(hace que no le importe mayusculas) buscamos "biological_region" yimprimimos el numero de veces que #aparece con wc-l
+ se extrae la columna se quitan las regiones que comienzan por "#" luego con el grep -i(hace que no le importe mayusculas) buscamos "biological_region" y imprimimos el numero de veces que aparece con wc-l
    
 cut -f3 Ave.gff3 | grep -v "^#" | grep -i "^gene" | wc -l
-# hay con el tag de gene en el organismo 16422, se hace lo mismo que para "biological_region" con la diferencia que con el #"^" se buscan solo las entradas que tienen "gene" al inicio puesto que hay otras entradas que contienen la palabra 
+#  Se hace lo mismo que para "biological_region" con la diferencia que con el #"^" se buscan solo las entradas que tienen "gene" al inicio puesto que hay otras entradas que contienen la palabra 
 
 cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq -c | sort -nr | head -n 10
-# Se extraen columnas se quitan las filas que comienzan por # se ordenan las entradas luego se usa uniq -c que cuenta las #lineas repetidas seguidas, por eso se usa sort antes y luego otro sort -nr para ordenarlos numericamente y el "r" para que sea de mayor a menor, head -nuemro 10 muestra las primeras 10 lineas, de aqui se saco el dato para el numero distinto de "region"
+# Se extraen columnas se quitan las filas que comienzan por # se ordenan las entradas luego se usa uniq -c (-count )que cuenta las #lineas repetidas seguidas, por eso se usa sort antes y luego otro sort -nr para ordenarlos numericamente y el "r" para que sea de mayor a menor, head -nuemro 10 muestra las primeras 10 lineas
 
 cut -f3 Ave.gff3 | grep -v "^#" | sort | uniq -c | sort -nr 
 # este se uso para hayar todos los conteos de los features 
+
+cut -f3,9 Ave.gff3 | grep -v "^#" | grep -i "^gene" | awk -F'\t' '{ match($2, /gene:([^;]+)/, arr); if(arr[1]!="") print arr[1] }' | sort | uniq | wc -l
+# Con este codigo primero se extraen la columna 6 y 9 luego se quitan los "#" y se identifican todas las lineas que comienzan por gene luego awk -F"\t" dice los campos estan separados por tabulacion, luego que compare (match) de la columna 2 ($2) todo lo que sea "gene:" y extraiga el texto hasta encontrar un ";" ([^;]) el + hace que se coja la secuencia antes de ";" sin incluir "gene:" luego con el arr le estas diciendo que te lo meta en un array, el if chequea que arr no este vacio para que el resto del codigo no de error si esta vacio, ya luego se imprime el array se ordena se quitan los repetidos y se cuentan las lineas.
+
