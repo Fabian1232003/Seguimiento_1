@@ -12,7 +12,9 @@ Este archivo es un formato usado en bioinformatica que consiste de nueve columna
 - Puntuacion, indicando la confiabilidad de la secuencia  
 - Cadena de ADN si es la foward "+" o reverse "-"
 - Phase, en caso de ser un gen te dice donde comenzar a leer las tripletas por ejemplo si es uno se comienza a leer el codon en el segundo nucleotido 
-- Atributos, indica varias cosas como un id unico si la secuencia es hija de otro ente en el arcivo, si es ADN circular entre otras cosas 
+- Atributos, indica varias cosas como un id unico si la secuencia es hija de otro ente en el arcivo, si es ADN circular entre otras cosas
+- Cuando aparece un "." es porque no aplica o no se conoce 
+- ejemplo completo: chrX  GenBank  gene   1000   5000   .  +  .  ID=gene00001;Name=GeneEjemplo
 
 ### Calidris pugnax Datos 
 - Es un ave limícola que habita en Eurasia y África; el ave presenta tamaño mediano, donde las hembras miden entre 25 y 26 cm, los machos entre 31 y 34 cm, y la envergadura alar de los machos es de 52 a 60 cm. Habita en humedales, marismas y bordes de ríos, donde realizan migraciones estacionales, y se alimenta principalmente de gusanos, insectos y semillas.
