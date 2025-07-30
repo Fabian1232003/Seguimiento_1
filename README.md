@@ -25,7 +25,7 @@ El archivo contiene 19 features ordenadas de mayor incidencia a menor incidencia
 <img src="image.png" alt="" width="600">
 
 ### ¿Cuantas regiones de la secuencia (cromosomas) contiene el archivo?
-- Para contestar esto hay que acalrar que se consideraron dos features ya que ambos aluden a regiones de cormosomas, la priemra es biological_region, hay 16442, para region hay que es el otro feature que habla de regiones hay 3753 entradas distintas, biological regions son sub-regiones de regions
+- Para contestar esto hay que acalrar que se consideraron dos features ya que ambos aluden a regiones de cormosomas, la priemra es biological_region, hay 16442, para region hay que es el otro feature que habla de regiones hay 3753 entradas distintas, se presume que biological_region es una subdivision de region que son las regiones principales y son las que en verdad responden la pregunta propuesta
   
   ### ¿Cuántos genes están listados en el organismo?
 - Para el apartado de genes hay 16442 entradas distintas, hay 3591 de ncRNA_gene que son genes que no codifican para proteinas como genes ribosomales por ejemplo, hay 39 pseudogenes que son mutado que no codifican para proteinas  
